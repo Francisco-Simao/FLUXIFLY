@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLUXIFLY</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- TELA 1: SPLASH SCREEN -->
+    <div id="splash" class="screen active">
+        <div class="logo-container">
+            <svg viewBox="0 0 200 200" class="logo-svg">
+                <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 100 20 A 80 80 0 0 0 100 180" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 40 40 A 80 80 0 0 1 160 160" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 40 160 A 80 80 0 0 1 160 40" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 30 120 C 60 150, 140 150, 170 120 L 170 130 C 130 170, 70 170, 30 130 Z" fill="currentColor" opacity="0.8"/>
+            </svg>
+        </div>
+        <h1>FLUXIFLY</h1>
+    </div>
+
+    <!-- TELA 2: LOGIN / CADASTRO -->
+    <div id="login" class="screen">
+        <div class="logo-container">
+            <svg viewBox="0 0 200 200" class="logo-svg">
+                <circle cx="100" cy="100" r="80" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 100 20 A 80 80 0 0 0 100 180" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 40 40 A 80 80 0 0 1 160 160" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 40 160 A 80 80 0 0 1 160 40" fill="none" stroke="currentColor" stroke-width="3"/>
+                <path d="M 30 120 C 60 150, 140 150, 170 120 L 170 130 C 130 170, 70 170, 30 130 Z" fill="currentColor" opacity="0.8"/>
+            </svg>
+            <h2>FLUXIFLY</h2>
+        </div>
+
+        <div class="form-container">
+            <input type="text" placeholder="Nome de usuário" class="input-field">
+            <input type="email" placeholder="Email" class="input-field">
+            <input type="password" placeholder="Senha" class="input-field">
+            <input type="password" placeholder="Confirme a senha" class="input-field">
+            <button id="btnEntrar" class="btn-entrar">ENTRAR</button>
+        </div>
+    </div>
+
+    <!-- TELA 3: HOME / PRINCIPAL -->
+    <div id="home" class="screen">
+        <div class="header">
+            <h1>Fluxifly app</h1>
+            <div class="icons">
+                <i class="fas fa-sync-alt"></i>
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <hr>
+
+        <div class="search-bar">
+            <i class="fas fa-search"></i>
+            <input type="text">
+            <i class="fas fa-times"></i>
+        </div>
+
+        <div class="grid-top">
+            <div class="item">
+                <div class="icon-box">
+                    <i class="fas fa-box"></i>
+                    <div class="check-badge"><i class="fas fa-check"></i></div>
+                </div>
+                <span>Estoque atual</span>
+            </div>
+            <div class="item">
+                <div class="alert-icon">
+                    <i class="fas fa-exclamation"></i>
+                </div>
+                <span>Alertas</span>
+            </div>
+        </div>
+
+        <p class="subtitle">Botões principais</p>
+
+        <div class="grid-main">
+            <button class="btn-main" onclick="showScreen('entrada')">
+                <div class="circle green">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                <span>Entrada</span>
+            </button>
+
+            <button class="btn-main" onclick="showScreen('saida')">
+                <div class="circle red">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+                <span>Saida</span>
+            </button>
+
+            <button class="btn-main" onclick="showScreen('inventario')">
+                <div class="icon">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <span>Inventário</span>
+            </button>
+
+            <button class="btn-main" onclick="showScreen('escaner')">
+                <div class="icon">
+                    <i class="fas fa-expand"></i>
+                </div>
+                <span>Escaner</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- TELA 4: ENTRADA -->
+    <div id="entrada" class="screen">
+        <div class="header">
+            <h1>Entrada</h1>
+            <i class="fas fa-bars"></i>
+        </div>
+        <hr>
+        <p class="screen-subtitle">Entrada de produto</p>
+
+        <div class="form-group">
+            <label>Produto :</label>
+            <div class="select-wrapper">
+                <select class="input-field">
+                    <option>Selecione...</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Quantidade :</label>
+            <div class="input-wrapper">
+                <input type="text" value="5" class="input-field">
+                <span class="value-text">5</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Data De Validade :</label>
+            <div class="input-wrapper">
+                <input type="text" value="15/05/2026" class="input-field">
+                <span class="value-text">15/05/2026</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Fornecedor :</label>
+            <div class="select-wrapper">
+                <select class="input-field">
+                    <option>Selecione...</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Lote :</label>
+            <input type="text" class="input-field">
+        </div>
+
+        <button class="btn-confirmar">CONFIRMAR</button>
+    </div>
+
+    <!-- TELA 5: SAÍDA -->
+    <div id="saida" class="screen">
+        <div class="header">
+            <h1>Saída</h1>
+            <i class="fas fa-bars"></i>
+        </div>
+        <hr>
+        <p class="screen-subtitle">Saída de produtos</p>
+
+        <div class="form-group">
+            <label>Produto :</label>
+            <div class="select-wrapper">
+                <select class="input-field">
+                    <option>Selecione...</option>
+                </select>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Quantidade :</label>
+            <div class="input-wrapper">
+                <input type="text" value="3" class="input-field">
+                <span class="value-text">3</span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Destino :</label>
+            <input type="text" class="input-field">
+        </div>
+
+        <button class="btn-confirmar">CONFIRMAR</button>
+    </div>
+
+    <!-- TELA 6: INVENTÁRIO -->
+    <div id="inventario" class="screen">
+        <div class="header">
+            <h1>Inventário</h1>
+            <i class="fas fa-bars"></i>
+        </div>
+        <hr>
+        <p class="screen-subtitle">Inventário rápido</p>
+
+        <div class="grid-inventario">
+            <div class="card">
+                <i class="fas fa-file-invoice"></i>
+                <span>Total de produtos acabado</span>
+            </div>
+            <div class="card">
+                <i class="fas fa-cog"></i>
+                <span>Ajuste automático de divergências</span>
+            </div>
+        </div>
+
+        <button class="btn-confirmar">iniciar inventário</button>
+
+        <div class="floating-icon">
+            <i class="fas fa-file-alt"></i>
+        </div>
+    </div>
+
+    <!-- TELA 7: ESCANER -->
+    <div id="escaner" class="screen">
+        <div class="header">
+            <h1>Escaner</h1>
+            <i class="fas fa-bars"></i>
+        </div>
+        <hr>
+
+        <div class="scan-section">
+            <h2>QR Code:</h2>
+            <div class="scan-frame">
+                <div class="scan-line"></div>
+            </div>
+        </div>
+
+        <div class="scan-section">
+            <h2>Código de barras:</h2>
+            <div class="barcode-frame">
+                <i class="fas fa-barcode"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
