@@ -1,43 +1,53 @@
-:root {
-    --bg-gradient: linear-gradient(180deg, #050a1a 0%, #0012cc 100%);
-    --white: #ffffff;
-    --red: #b94d4d;
-    --green: #248a3d;
-}
+* { box-sizing: border-box; font-family: sans-serif; }
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: var(--bg-gradient);
-    color: var(--white);
-    height: 100vh;
-    overflow: hidden;
+body, html {
+    margin: 0; padding: 0;
+    background: linear-gradient(180deg, #050a30 0%, #0000ff 100%);
+    color: white; height: 100vh; overflow: hidden;
 }
 
 .screen {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    height: 100%;
+    display: none; height: 100vh; width: 100%;
+    padding: 20px; flex-direction: column;
 }
 
-.screen.active { display: flex; }
+.active { display: flex; }
 
-input, select {
-    width: 80%;
-    padding: 12px;
-    margin: 10px 0;
-    border-radius: 8px;
-    border: none;
+/* Splash & Login */
+.logo-container { text-align: center; margin-top: 40%; }
+.globe-icon { font-size: 80px; opacity: 0.5; }
+.login-box { display: flex; flex-direction: column; gap: 15px; margin-top: 50px; }
+input, select { padding: 12px; border-radius: 5px; border: none; }
+.btn-entrar { background-color: #b35a5a; color: white; border: none; padding: 15px; cursor: pointer; }
+
+/* Dashboard */
+header { border-bottom: 1px solid #fff; padding-bottom: 10px; margin-bottom: 20px; }
+.search-bar { width: 100%; margin: 10px 0; }
+.main-options { display: flex; justify-content: space-around; margin-bottom: 30px; }
+.opt-card { text-align: center; background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; width: 45%; }
+
+/* Grid Buttons */
+.grid-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.btn-grid { padding: 20px; border: none; border-radius: 10px; color: white; font-weight: bold; }
+.green { background-color: #2e7d32; }
+.red { background-color: #c62828; }
+.blue { background-color: #1565c0; }
+
+/* Forms & Tables */
+.form-container { display: flex; flex-direction: column; gap: 8px; }
+.btn-confirm { background-color: #4caf50; color: white; border: none; padding: 15px; margin-top: 20px; border-radius: 5px; }
+.alert-table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.1); }
+.alert-table td, th { border: 1px solid #fff; padding: 10px; text-align: center; }
+
+/* Alerta Box */
+.warning-box { background-color: #e57373; margin-top: 20px; padding: 15px; border-radius: 5px; display: flex; align-items: center; gap: 10px; }
+
+/* Overlay de Sucesso */
+.overlay {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,255,0.9); flex-direction: column; justify-content: center; align-items: center;
 }
-
-.btn-red { background: var(--red); color: white; padding: 15px 40px; border: none; border-radius: 5px; cursor: pointer; }
-.btn-confirm { background: var(--green); width: 80%; padding: 15px; border: none; color: white; font-weight: bold; margin-top: 20px; }
-
-.main-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px; }
-.card { background: rgba(255,255,255,0.1); padding: 30px; border-radius: 15px; text-align: center; }
-
-.circle-btn { width: 80px; height: 80px; border-radius: 50%; border: none; color: white; font-size: 10px; }
-.green { background: #008000; }
-.red { background: #d00000; }
+.success-circle {
+    width: 100px; height: 100px; background: #8bc34a; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center; font-size: 50px;
+}

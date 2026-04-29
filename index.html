@@ -5,62 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fluxifly App</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <section id="screen-splash" class="screen active">
+    <div id="screen-splash" class="screen active" onclick="showScreen('screen-login')">
         <div class="logo-container">
-            <img src="logo-fluxifly.png" alt="Fluxifly Logo">
+            <div class="globe-icon">🌐</div>
             <h1>FLUXIFLY</h1>
         </div>
-    </section>
+    </div>
 
-    <section id="screen-login" class="screen">
-        <img src="logo-fluxifly.png" class="mini-logo">
-        <h2>FLUXIFLY</h2>
-        <input type="text" placeholder="Nome de usuário">
-        <input type="email" placeholder="Email">
-        <input type="password" placeholder="Senha">
-        <input type="password" placeholder="Confirme a senha">
-        <button class="btn-red" onclick="navigateTo('screen-home')">ENTRAR</button>
-    </section>
-
-    <section id="screen-home" class="screen">
-        <header>
-            <h1>Fluxifly app</h1>
-            <div class="icons"><span>🔄</span> <span>☰</span></div>
-        </header>
-        <div class="search-bar"><input type="text" placeholder="🔍"></div>
-        
-        <div class="main-grid">
-            <div class="card" onclick="navigateTo('screen-estoque')">📦 Estoque atual</div>
-            <div class="card" onclick="navigateTo('screen-alertas')">⚠️ Alertas</div>
+    <div id="screen-login" class="screen">
+        <div class="logo-small">🌐 FLUXIFLY</div>
+        <div class="login-box">
+            <input type="text" placeholder="Nome de usuário">
+            <input type="email" placeholder="Email">
+            <input type="password" placeholder="Senha">
+            <input type="password" placeholder="Confirme a senha">
+            <button class="btn-entrar" onclick="showScreen('screen-home')">ENTRAR</button>
         </div>
+    </div>
 
-        <div class="bottom-controls">
-            <h3>Botões principais</h3>
-            <div class="btn-grid">
-                <button class="circle-btn green" onclick="navigateTo('screen-entrada')">⬅️ Entrada</button>
-                <button class="circle-btn red" onclick="navigateTo('screen-saida')">➡️ Saída</button>
-                <button class="circle-btn blue" onclick="navigateTo('screen-inventario')">📋 Inventário</button>
-                <button class="circle-btn blue" onclick="navigateTo('screen-escaner')">🔲 Escaner</button>
+    <div id="screen-home" class="screen">
+        <header>
+            <h2>Fluxifly app <span class="reload">↻</span> <span class="menu">☰</span></h2>
+            <input type="text" class="search-bar" placeholder="🔍 Buscar...">
+        </header>
+
+        <div class="main-options">
+            <div class="opt-card" onclick="showScreen('screen-estoque')">
+                <div class="icon">📦</div>
+                <p>Estoque atual</p>
+            </div>
+            <div class="opt-card" onclick="showScreen('screen-alertas')">
+                <div class="icon-alert">!</div>
+                <p>Alertas</p>
             </div>
         </div>
-    </section>
 
-    <section id="screen-entrada" class="screen">
-        <header><h2>Entrada</h2> <span onclick="navigateTo('screen-home')">☰</span></header>
-        <div class="form">
-            <label>Produto:</label> <select><option>Produto A</option></select>
-            <label>Quantidade:</label> <input type="number" value="5">
-            <button class="btn-confirm" onclick="confirmAction('entrada')">Confirmar</button>
+        <h3>Botões principais</h3>
+        <div class="grid-buttons">
+            <button class="btn-grid green" onclick="showScreen('screen-entrada')">
+                <span class="arrow">←</span> Entrada
+            </button>
+            <button class="btn-grid red" onclick="showScreen('screen-saida')">
+                <span class="arrow">→</span> Saída
+            </button>
+            <button class="btn-grid blue">📋 Inventário</button>
+            <button class="btn-grid blue">🔍 Escaner</button>
         </div>
-    </section>
+    </div>
 
-    <section id="screen-success" class="screen">
-        <div class="success-icon">✔️</div>
-        <h2 id="success-text">Entrada confirmada</h2>
-    </section>
+    <div id="screen-estoque" class="screen">
+        <header><button onclick="showScreen('screen-home')">←</button> Estoque</header>
+        <div class="content">
+            <h3>Estoque atual</h3>
+            <canvas id="meuGrafico"></canvas>
+        </div>
+    </div>
+
+    <div id="screen-alertas" class="screen">
+        <header><button onclick="showScreen('screen-home')">←</button> Alertas</header>
+        <div class="content">
+            <h4>• Itens com excesso</h4>
+            <table class="alert-table">
+                <tr><th>Código</th><th>Produto</th><th>Qtde</th></tr>
+                <tr><td>P001</td><td>Produto A</td><td>150</td></tr>
+                <tr><td>P002</td><td>Produto B</td><td>200</td></tr>
+            </table>
+            <div class="warning-box">
+                <div class="warning-icon">⚠️</div>
+                <div class="warning-text">
+                    <strong>Atenção</strong><br>Estoque acima do nível ideal
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="screen-entrada" class="screen">
+        <header><button onclick="showScreen('screen-home')">←</button> Entrada</header>
+        <div class="form-container">
+            <label>Produto:</label>
+            <select><option>Selecione...</option></select>
+            <label>Quantidade:</label>
+            <input type="number">
+            <label>Data de Validade:</label>
+            <input type="date">
+            <label>Fornecedor:</label>
+            <select><option>Selecione...</option></select>
+            <label>Lote:</label>
+            <input type="text">
+            <button class="btn-confirm" onclick="confirmAction('Entrada confirmada')">Confirmar</button>
+        </div>
+    </div>
+
+    <div id="screen-saida" class="screen">
+        <header><button onclick="showScreen('screen-home')">←</button> Saída</header>
+        <div class="form-container">
+            <label>Produto:</label>
+            <select><option>Selecione...</option></select>
+            <label>Quantidade:</label>
+            <input type="number">
+            <label>Destino:</label>
+            <input type="text">
+            <button class="btn-confirm" onclick="confirmAction('Saída confirmada')">Confirmar</button>
+        </div>
+    </div>
+
+    <div id="overlay-confirm" class="overlay">
+        <div class="success-circle">✓</div>
+        <h2 id="confirm-msg">Ação Confirmada</h2>
+        <button onclick="closeOverlay()">OK</button>
+    </div>
 
     <script src="script.js"></script>
 </body>
